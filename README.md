@@ -194,6 +194,7 @@ Pembahasan :
 mv /usr/share/squid/errors/English/ERR_ACCESS_DENIED usr/share/squid/errors/English/ERR_ACCESS_DENIDE
 cp -r ERR_ACCESS_DENIED /usr/share/squid/errors/English/ERR_ACCESS_DENIED
 ```
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/Forbidden.jpg?raw=true)<br /><br />
 
 ## 12. Setting DNS server (MALANG) agar mengakses Proxy server (MOJOKERTO) dapat melalui domain janganlupa-ta.t07.pw dengan port 8080.
 
