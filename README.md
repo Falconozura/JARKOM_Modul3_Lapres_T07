@@ -139,7 +139,6 @@ http_access deny !USERS
 ```
 NB : Sebelum digabung dengan soal selanjutnya<br />
 ![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/8.png?raw=true)<br /><br />
-![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/Login.png?raw=true)<br /><br />
 
 ## 8. Setting agar Proxy server (MOJOKERTO) hanya dapat diakses pada hari Selasa-Rabu pukul 13.00-18.00.
 
