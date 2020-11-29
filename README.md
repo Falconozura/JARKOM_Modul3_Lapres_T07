@@ -41,6 +41,8 @@ xterm -T BANYUWANGI -e linux ubd0=BANYUWANGI,jarkom umid=BANYUWANGI eth0=daemon,
 xterm -T MADIUN -e linux ubd0=MADIUN,jarkom umid=MADIUN eth0=daemon,,,switch3 mem=64M &
 ```
 
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/1.png?raw=true)<br /><br />
+
 ## 2. Setting Router SURABAYA agar menjadi DHCP relay antar DHCP server dan client.
 
 Pembahasan :
@@ -50,11 +52,14 @@ Pembahasan :
 4. Menambahkan konfigurasi `INTERFACES="eth1 eth2 eth3"`. 
 5. Restart service dengan command `service isp-dhcp-relay restart`.
 
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/2.png?raw=true)<br /><br />
+
 ## 3. Setting DHCP server (TUBAN) agar subnet 1 mendapatkan range IP dari 192.168.0.10 sampai 192.168.0.100 dan 192.168.0.110 sampai 192.168.0.200.
 
 Pembahasan :
 1. Download DHCP server menggunakan command `apt-get install isc-dhcp-server`.
 2. Setting INTERFACES yang digunakan oleh TUBAN pada file `/etc/default/isc-dhcp-server` dengan `INTERFACES="eth0"`.
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/3.png?raw=true)<br /><br />
 3. Mendeklarasikan subnet 2 dengan `subnet 10.151.73.152 netmask 255.255.255.248` pada `/etc/dhcp/dhcpd.conf`.
 4. Lalu setting untuk subnet 1 sebagai berikut :
 ```
@@ -77,6 +82,10 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
   max-lease-time 7200;
 }
 ```
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/4.png?raw=true)<br /><br />
+5. Mengecek pada Client Gresik dan Banyuwangi
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/5.png?raw=true)<br /><br />
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/6.png?raw=true)<br /><br />
 
 ## 4. Setting DHCP server (TUBAN) agar subnet 3 mendapatkan range IP dari 192.168.1.50 sampai 192.168.1.70.
 
@@ -103,13 +112,17 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
   max-lease-time 7200;
 }
 ```
-3. Melakukan konfigurasi pada Banyuwangi dan Madiun dengan `ifconfig`
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/4.png?raw=true)<br /><br />
+3. Melakukan konfigurasi pada Banyuwangi dan Gresik dengan `ifconfig`
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/6.png?raw=true)<br /><br />
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/5.png?raw=true)<br /><br />
 
 ## 5. Setting DHCP server (TUBAN) agar client mendapatkan DNS MALANG dan DNS 202.46.129.2 dari DHCP
 
 Pembahasan :
 1. Buka `etc/dhcp/dhcpd.conf` pada Tuban.
 2. Melakukan konfigurasi `option-domain-servers` sebagai berikut : `10.151.83.138, 202.46.129.2`.
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/4.png?raw=true)<br /><br />
 
 ## 6. Setting DHCP server (TUBAN) agar subnet 1 mendapatkan peminjaman alamat IP selama 5 menit dan subnet 3 mendapatkan peminjaman alamat IP selama 10 menit.
 
@@ -118,9 +131,10 @@ Pembahasan :
 2. Mengubah `default-lease-time` dan `max-lease-time` pada subnet 1 dan 3.
 3. Pada subnet 1 konfigurasinya adalah : `default-lease-time 300` (5menit).
 4. Pada subnet 3 konfigurasinya adalah : `default-lease-time 600` (10menit).
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/4.png?raw=true)<br /><br />
 
 ## 7. Setting agar akses Proxy server (MOJOKERTO) memerlukan autentikasi dengan `user: userta_t07` dan password: `inipassw0rdta_t07`
-
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/7.png?raw=true)<br /><br />
 Pembahasan :
 1. Melakukan `apt-get install squid` pada proxy server, yaitu Mojokerto.
 2. Mengecek apakah squid sudah berjalan dengan `service squid status`.
@@ -143,14 +157,17 @@ acl USERS proxy_auth REQUIRED
 http_access deny !USERS
 ```
 NB : Sebelum digabung dengan soal selanjutnya
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/8.png?raw=true)<br /><br />
 
 ## 8. Setting agar Proxy server (MOJOKERTO) hanya dapat diakses pada hari Selasa-Rabu pukul 13.00-18.00.
 
 Pembahasan :
 1. Membuat file baru `acl.conf` dalam folder squid dan buka filenya.
 2. Menambahkan isi filenya dengan `acl AVAILABLE_WORKING time TW 13:00-18:00`. Lalu save.
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/9.png?raw=true)<br /><br />
 3. Buka file `squid.conf`
 4. Menambahkan konfigurasi `http_access allow AVAILABLE_WORKING`.
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/10.png?raw=true)<br /><br />
 
 ## 9. Setting agar Proxy server (MOJOKERTO) hanya dapat diakses pada hari Selasa-Kamis pukul 21.00-09.00 keesokan harinya.
 
@@ -162,18 +179,21 @@ acl AVAILABLE_BIMBINGAN_MALAM time TWH 21:00-24:00
 acl AVAILABLE_BIMBINGAN_PAGI time WHF 00:00-09:00
 ```
 Lalu save filenya
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/9.png?raw=true)<br /><br />
 3. Membuka file `squid.conf`
 4. Menambahkan konfigurasi berikut :
 ```
 http_access allow AVAILABLE_BIMBINGAN_MALAM
 http_access allow PAGI
 ```
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/10.png?raw=true)<br /><br />
 
 ## 10. Setting Proxy server (MOJOKERTO) agar ketika mengakses google.com, maka akan diredirect menuju monta.if.its.ac.id.
 
 Pembahasan :
 1. Membuka file `acl.conf`.
 2. Menambahkan `acl lan src all` dan `acl FORWARD_GOOGLE dstdomain .google.com`. Lalu save.
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/9.png?raw=true)<br /><br />
 3. Membuka file `squid.conf`
 4. Menambahkan
 ```
@@ -181,6 +201,7 @@ deny_info http://monta.if.its.ac.id lan
 http_reply_access deny google lan
 http_access allow all
 ```
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/11.png?raw=true)<br /><br />
 
 ## 11. Setting Proxy server (MOJOKERTO) agar mengubah error page default squid menjadi halaman yang disediakan.
 
@@ -196,7 +217,8 @@ cp -r ERR_ACCESS_DENIED /usr/share/squid/errors/English/ERR_ACCESS_DENIED
 ## 12. Setting DNS server (MALANG) agar mengakses Proxy server (MOJOKERTO) dapat melalui domain janganlupa-ta.t07.pw dengan port 8080.
 
 Pembahasan :
-1. Menuliskan dalam kolom HTTP Proxy "janganlupa-ta.t07.pw" dengan port "8080"
+1. Menuliskan dalam kolom HTTP Proxy `janganlupa-ta.t07.pw` dengan port `8080`.
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/12.png?raw=true)<br /><br />
 2. Masuk kedalam folder `named.conf.local` pada Malang.
 3. Membuka `etc/bind/named.conf.local`.
 4. Menambahkan
@@ -206,6 +228,7 @@ zone "janganlupa-ta.t07.pw" {
   file "/etc/bind/proxy/janganlupa-ta.t07.pw";
 };
 ```
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/13.png?raw=true)<br /><br />
 5. Membuka file `janganlupa-ta.t07.pw`.
 6. Membuka `etc/bind/proxy/janganlupa-ta.t07.pw` dan menambahkan IP Malang.
-
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/14.png?raw=true)<br /><br />
