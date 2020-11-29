@@ -137,6 +137,8 @@ acl USERS proxy_auth REQUIRED
 
 http_access deny !USERS
 ```
+![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/Login.png?raw=true)<br /><br />
+
 NB : Sebelum digabung dengan soal selanjutnya<br />
 ![img](https://github.com/Falconozura/JARKOM_Modul3_Lapres_T07/blob/main/img/8.png?raw=true)<br /><br />
 
